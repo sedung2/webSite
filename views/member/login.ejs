@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <!--- basic page needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Philosophy</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <!-- mobile specific metas
+        ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <!-- Script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+        <!-- CSS
+        ================================================== -->
+        <link rel="stylesheet" href="/css/sub/login.css">
+    
+    </head>
+    
+    <body>
+        <!-- 로그인 Form -->
+        <div class="form-wrapper" id="wrapper-login">
+            <div class="content-wrapper" id="content-signin">
+
+
+
+                <form class="form-login" method="post" action="login">
+                    <input type="text" name="loginID" placeholder="아이디" class="input-username" />
+                    <input type="password" name="loginPassword" placeholder="비밀번호" class="input-password" />
+                    <button type="submit" class="btn-login">로그인</button>
+                </form>
+                <p>아직 회원이 아니신가요?&nbsp;<a id="registerBtn" href="#wrapper-signup">회원가입</a></p>
+            </div>
+        </div>
+        
+        <!-- 회원가입 Form -->
+        <div class="form-wrapper" id="wrapper-signup">
+            <div class="content-wrapper" id="content-signin">
+
+
+
+                <form class="form-login" id="registerForm" method="post" action="register">
+                    <input type="text" id="id" name="id" placeholder="아이디 (6자 이상 영문)" class="input-username" />
+                    <input type="text" id="name" name="name" placeholder="이름 ex) Lei_Enodera" class="input-username" />
+                    <input type="password" id="password" name="password" placeholder="비밀번호" class="input-password" />
+                    <input type="email" id="email" name="email" placeholder="이메일 (Daum)" class="input-email" />
+                    <button type="submit" class="btn-login" id="registerSubmit">회원가입</button>
+                </form>
+                <p>이미 회원이신가요?&nbsp;<a href="#wrapper-login">로그인</a></p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $("#registerSubmit").click(function() {
+           check();
+        });
+        
+        $("#registerBtn").click(function() {  
+            document.getElementById("registerForm").reset(); 
+        });
+        
+        function check() {
+            var id = $("#id").val();
+            var name = $("#name").val();
+            var password = $("#password").val();
+            var email = $("#email").val();
+            
+            if(id.length < 6) {
+                alert("아이디를 6자 이상 입력하세요.");
+            } else if(password.legth < 6) {
+                alert("비밀번호를 6자 이상 입력하세요.");
+            } else if(name.length < 3) { 
+                alert("올바른 이름을 입력하세요.");
+            } else if(email.length < 10) {
+                alert("((실제 이용중인 다음 메일을 입력하세요.))");
+            } else {
+                alert("회원가입 성공!");
+            }
+        }
+     });  
+</script>
